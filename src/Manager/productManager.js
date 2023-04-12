@@ -1,6 +1,7 @@
+import { error } from "console";
 import fs from "fs";
 
-const path = "./src/files/products.json";
+const path = "../src/files/products.json";
 
 export default class ProductManager {
   constructor() {
@@ -11,16 +12,25 @@ export default class ProductManager {
 
   addProduct = async (product) => {
     const products = await this.getProducts();
-    const { title, description, price, thumbnail, code, stock } = product;
+    const { title, description, price, thumbnail, code, stock, category } =
+      product;
 
     if (products.some((product) => product.code === code)) {
       console.log("Error: Producto con el mismo codigo ya existe!!");
       return "Error: Producto con el mismo codigo ya existe!!";
     }
-    if (!title || !description || !price || !thumbnail || !code || !stock) {
+    if (
+      !title ||
+      !description ||
+      !price ||
+      !thumbnail ||
+      !code ||
+      !stock ||
+      !category
+    ) {
       return "Error: Todos los campos son requeridos";
     }
-
+    product.status = true;
     if (products.length === 0) {
       product.id = 1;
     } else {
@@ -37,6 +47,7 @@ export default class ProductManager {
 
   getProducts = async (limit) => {
     if (fs.existsSync(this.path)) {
+      console.log("existe el archivo");
       const data = await fs.promises.readFile(this.path, "utf-8");
       const products = JSON.parse(data);
       if (limit && typeof limit === "number" && limit > 0) {
@@ -44,36 +55,28 @@ export default class ProductManager {
       }
       return products;
     } else {
+      console.log('no existe el archivo "products.json"');
       return [];
     }
   };
 
   getProductById = async (id) => {
     const products = await this.getProducts();
-
     const product = products.find((el) => el.id === id);
     if (!product) {
-      console.log("Error: Producto no encontrado");
-      return { Error: "Producto no encontrado" };
+      throw new Error("Producto no encontrado");
     }
     return product;
   };
-  updateProduct = async (
-    id,
-    title,
-    description,
-    price,
-    thumbnail,
-    code,
-    stock
-  ) => {
+  updateProduct = async (id, editProduct) => {
     /* Traigo los productos usando un metodo el metodo getProducts */
+    const { title, description, price, thumbnail, code, stock } = editProduct;
     const products = await this.getProducts();
     const product = await this.getProductById(id);
     const index = products.findIndex((p) => p.id === id);
 
     if (!product) {
-      return "Error: Producto no encontrado";
+    return (mensaje = "Error: Producto no encontrado");
     } else {
       title && typeof title === "string" && title.trim() !== ""
         ? (product.title = title)
@@ -123,22 +126,21 @@ export default class ProductManager {
     }
   };
   deleteProduct = async (id) => {
-    const products = await this.getProducts();
-    const product = await this.getProductById(id);
-    if (!product) {
-      return console.log("Error: Producto no encontrado");
-    } else {
-      const index = products.indexOf(product);
-      products.splice(index, 1);
-      try {
-        await fs.promises.writeFile(
-          this.path,
-          JSON.stringify(products, null, "\t")
-        );
-        return "Producto eliminado con exito";
-      } catch (error) {
-        return error;
-      }
+    let products = await this.getProducts();
+    const productIndex = products.findIndex((product) => product.id == id);
+    console.log(productIndex);
+    if (productIndex === -1) {
+      return "Error: Producto no encontrado";
+    }
+    products.splice(productIndex, 1);
+    try {
+      await fs.promises.writeFile(
+        this.path,
+        JSON.stringify(products, null, "\t")
+      );
+      return "Producto eliminado con exito";
+    } catch (error) {
+      return error;
     }
   };
 }

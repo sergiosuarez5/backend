@@ -1,18 +1,3 @@
-import ProductManager from "./src/Manager/productManager.js";
-import express from "express";
-
-const manager = new ProductManager();
-
-const app = express();
-
-app.use(express.urlencoded({ extended: true }));
-
-const PORT = 8080;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-
 app.get("/", async (req, res) => {
     const products = await manager.getProducts();
     res.send(products);
