@@ -1,57 +1,24 @@
 [
 	{
-		"title": "camisaLan",
-		"description": "camisa de algodon",
-		"price": "100",
-		"thumbnail": "imagen.jpg",
-		"code": "1023",
-		"stock": 50,
-		"id": 1
-	},
-	{
-		"title": "camisa",
-		"description": "camisa de algodon",
-		"price": "100",
-		"thumbnail": "imagen.jpg",
-		"code": "123",
-		"stock": 10,
-		"id": 2
-	},
-	{
-		"title": "pantalon",
-		"description": "camisa de algodon",
-		"price": "100",
-		"thumbnail": "imagen.jpg",
-		"code": "1243",
-		"stock": 50,
-		"id": 3
-	},
-	{
-		"title": "remera",
-		"description": "camisa de algodon",
-		"price": "100",
-		"thumbnail": "imagen.jpg",
-		"code": "1123",
-		"stock": 50,
-		"id": 4
-	},
-	{
-		"title": "camisa",
-		"description": "camisa de algodon",
-		"price": "100",
-		"thumbnail": "imagen.jpg",
-		"code": "2123",
-		"stock": 50,
-		"id": 5
-	},
-	{
 		"title": "remera",
 		"description": "remera de algodon",
 		"price": "150",
 		"thumbnail": "imagen.jpg",
 		"code": "2143",
 		"stock": 50,
-		"id": 6
+		"id": 6,
+		"status": true
+	},
+	{
+		"title": "Producto nuevo agregado 7",
+		"description": "Remera estampada",
+		"price": 334,
+		"thumbnail": "direccion de la imagen",
+		"code": "15113212",
+		"stock": 31,
+		"id": 7,
+		"status": true,
+		"category": "remerass"
 	},
 	{
 		"title": "remera",
@@ -60,33 +27,49 @@
 		"thumbnail": "imagen.jpg",
 		"code": "2243",
 		"stock": 50,
-		"id": 7
+		"id": 8,
+		"status": true
 	},
 	{
 		"title": "remera",
 		"description": "remera de algodon",
 		"price": "150",
 		"thumbnail": "imagen.jpg",
-		"code": "2343",
+		"code": "2243",
 		"stock": 50,
-		"id": 8
+		"id": 9,
+		"status": true
 	},
 	{
-		"title": "camisa",
-		"description": "camisa de algodon",
-		"price": 100,
-		"thumbnail": "imagen.jpg",
-		"code": "123",
-		"stock": 38,
-		"id": 9
-	},
-	{
-		"title": "camisa",
-		"description": "camisa de algodon",
+		"title": "remera",
+		"description": "remera de algodon",
 		"price": "150",
 		"thumbnail": "imagen.jpg",
-		"code": "123",
-		"stock": 99,
-		"id": 10
+		"code": "2243",
+		"stock": 50,
+		"id": 10,
+		"status": true
+	},
+	{
+		"title": "Producto nuevo agregado",
+		"description": "Remera lisa",
+		"price": 290,
+		"thumbnail": "direccion de la imagen",
+		"code": "5113212",
+		"stock": 31,
+		"category": "remeras",
+		"status": true,
+		"id": 11
+	},
+	{
+		"title": "Producto nuevo agregado",
+		"description": "Remera lisa",
+		"price": 290,
+		"thumbnail": "direccion de la imagen",
+		"code": "511312",
+		"stock": 31,
+		"category": "remeras",
+		"status": true,
+		"id": 12
 	}
 ]
